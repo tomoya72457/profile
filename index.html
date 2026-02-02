@@ -1,117 +1,333 @@
 <!DOCTYPE html>
-<html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>私の自己紹介ブログ</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <header class="hero">
-      <p class="hero__eyebrow">Hello, I'm</p>
-      <h1 class="hero__title">南 ひかり</h1>
-      <p class="hero__subtitle">
-        都市の光と音からインスピレーションを受ける、東京在住のプロダクトデザイナーです。
-      </p>
-      <div class="hero__meta">
-        <span>Tokyo, Japan</span>
-        <span>✦</span>
-        <span>Product Designer</span>
-      </div>
-      <div class="hero__actions">
-        <a class="button" href="#about">プロフィール</a>
-        <a class="button button--ghost" href="#contact">お問い合わせ</a>
-      </div>
-    </header>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>井手智也 : 自己紹介ページ</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Helvetica Neue', 'Arial', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Meiryo', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* カスタムスタイルがあればここに記述 */
+        .timeline-dot {
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 1.25rem;
+            height: 1.25rem;
+            border-radius: 9999px;
+            border-width: 4px;
+            border-color: white;
+            z-index: 10;
+        }
+        .dark .timeline-dot {
+            border-color: #0f172a; /* slate-900 */
+        }
+        
+        /* タイムラインの線 */
+        .timeline-line {
+            position: absolute;
+            left: 9px;
+            top: 0.5rem;
+            bottom: 0;
+            width: 2px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 transition-colors duration-300 font-sans antialiased">
 
-    <main>
-      <section id="about" class="section">
-        <h2>About Me</h2>
-        <p>
-          デジタルとフィジカルの境界を越える体験をつくることが好きです。日々の暮らしから拾った小さな発見を、
-          使う人の心に残るプロダクトへと昇華させることを目指しています。
-        </p>
-        <div class="card-grid">
-          <article class="card">
-            <h3>得意領域</h3>
-            <ul>
-              <li>UXリサーチ / ユーザーインタビュー</li>
-              <li>プロトタイピングと検証</li>
-              <li>デザインシステム構築</li>
-            </ul>
-          </article>
-          <article class="card">
-            <h3>趣味</h3>
-            <ul>
-              <li>夜景の写真を撮ること</li>
-              <li>ジャズ喫茶めぐり</li>
-              <li>週末の朝ヨガ</li>
-            </ul>
-          </article>
-          <article class="card">
-            <h3>最近のテーマ</h3>
-            <ul>
-              <li>サステナブルな生活のデザイン</li>
-              <li>地域コミュニティとの共創</li>
-              <li>生成AIを使った発想法</li>
-            </ul>
-          </article>
+    <!-- Header / Nav -->
+    <nav class="fixed w-full bg-white/80 dark:bg-slate-900/80 backdrop-blur-md z-50 border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
+        <div class="max-w-4xl mx-auto px-6 h-16 flex justify-between items-center">
+            <span class="font-bold text-xl tracking-tight">Tomoya Ide</span>
+            <div class="flex items-center gap-4">
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500" aria-label="Toggle Dark Mode">
+                    <i data-lucide="moon" class="hidden dark:block w-5 h-5"></i>
+                    <i data-lucide="sun" class="block dark:hidden w-5 h-5"></i>
+                </button>
+            </div>
         </div>
-      </section>
+    </nav>
 
-      <section class="section">
-        <h2>Latest Posts</h2>
-        <div class="post-list">
-          <article class="post">
-            <div class="post__date">2024.06.12</div>
-            <h3>光のグラデーションを意識した夜の街歩き</h3>
-            <p>
-              先週末、渋谷から表参道までカメラ片手に歩いてみました。光の移ろいを記録することで、
-              UIの配色に活かせる発見がたくさんありました。
+    <!-- 1. Hero Section -->
+    <section class="py-20 px-6 max-w-4xl mx-auto pt-32 pb-20 md:pt-40">
+        <div class="max-w-3xl mx-auto space-y-8 text-center">
+            <div class="space-y-6">
+                <div class="inline-block px-3 py-1 text-sm font-semibold tracking-wider text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 rounded-full border border-blue-100 dark:border-blue-800">
+                    Data Science Student
+                </div>
+                <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight">
+                    井手智也 : 自己紹介ページ
+                </h1>
+                <p class="text-xl md:text-2xl text-slate-600 dark:text-slate-300 font-medium">
+                    データと論理で、<br class="md:hidden" />
+                    不確実な世界に足場を築く。
+                </p>
+                <p class="text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl mx-auto">
+                    中央大学理工学部ビジネスデータサイエンス学科の自然言語処理研究室に所属している。データサイエンスに関連する学生団体での活動に加え、インターンや企業主催の勉強会にも参加している。将来はデータサイエンティストを目指している。
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center pt-6">
+                    <a href="#works" class="inline-flex justify-center items-center gap-2 px-6 py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 font-semibold rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-200">
+                        View Works
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Highlights (Strengths) -->
+    <section class="py-20 px-6 max-w-4xl mx-auto bg-white dark:bg-slate-800/50 rounded-3xl my-10 border border-slate-100 dark:border-slate-800">
+        <h2 class="text-3xl md:text-4xl font-bold mb-12 text-slate-900 dark:text-slate-100 tracking-tight">Highlights</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+            <!-- Item 1 -->
+            <div class="space-y-4">
+                <div class="w-12 h-12 rounded-xl bg-blue-50 dark:bg-slate-700 flex items-center justify-center">
+                    <i data-lucide="brain" class="text-blue-600 dark:text-blue-400 w-6 h-6"></i>
+                </div>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100">自然言語処理への没頭</h3>
+                <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
+                    大学での研究に加え、インターンや自主学習を通じてNLP技術を深掘りしている。RAG構築やアスペクトベース感情分析など、実用的な技術適用に関心が強い。
+                </p>
+            </div>
+            <!-- Item 2 -->
+            <div class="space-y-4">
+                <div class="w-12 h-12 rounded-xl bg-blue-50 dark:bg-slate-700 flex items-center justify-center">
+                    <i data-lucide="database" class="text-blue-600 dark:text-blue-400 w-6 h-6"></i>
+                </div>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100">再現性と根拠の重視</h3>
+                <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
+                    「なぜそうなるのか」という前提整理を重視する。データ分析においては、結果の数値だけでなく、そのプロセスが論理的かつ再現可能であることを最優先事項としている。
+                </p>
+            </div>
+            <!-- Item 3 -->
+            <div class="space-y-4">
+                <div class="w-12 h-12 rounded-xl bg-blue-50 dark:bg-slate-700 flex items-center justify-center">
+                    <i data-lucide="zap" class="text-blue-600 dark:text-blue-400 w-6 h-6"></i>
+                </div>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100">教育と体系化</h3>
+                <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
+                    個別指導塾での経験や教材作成のインターンを通じ、複雑な概念を噛み砕いて伝えるスキルを磨いた。チーム開発においても認識の齟齬を減らすコミュニケーションを心がけている。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Skills -->
+    <section class="py-20 px-6 max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold mb-12 text-slate-900 dark:text-slate-100 tracking-tight">Skills</h2>
+        <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+            <div class="flex flex-wrap" id="skill-chips">
+                <!-- Skills will be inserted here statically for better readability in HTML -->
+                <span class="inline-block px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-sm font-medium mr-2 mb-2 border border-slate-200 dark:border-slate-600">Python</span>
+                <span class="inline-block px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-sm font-medium mr-2 mb-2 border border-slate-200 dark:border-slate-600">pandas</span>
+                <span class="inline-block px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-sm font-medium mr-2 mb-2 border border-slate-200 dark:border-slate-600">scikit-learn</span>
+                <span class="inline-block px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-sm font-medium mr-2 mb-2 border border-slate-200 dark:border-slate-600">R</span>
+                <span class="inline-block px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-sm font-medium mr-2 mb-2 border border-slate-200 dark:border-slate-600">JavaScript</span>
+                <span class="inline-block px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-sm font-medium mr-2 mb-2 border border-slate-200 dark:border-slate-600">React</span>
+                <span class="inline-block px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-sm font-medium mr-2 mb-2 border border-slate-200 dark:border-slate-600">Next.js</span>
+                <span class="inline-block px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-sm font-medium mr-2 mb-2 border border-slate-200 dark:border-slate-600">Tailwind CSS</span>
+                <span class="inline-block px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-sm font-medium mr-2 mb-2 border border-slate-200 dark:border-slate-600">Git/GitHub</span>
+                <span class="inline-block px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-sm font-medium mr-2 mb-2 border border-slate-200 dark:border-slate-600">NLP</span>
+                <span class="inline-block px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-sm font-medium mr-2 mb-2 border border-slate-200 dark:border-slate-600">RAG</span>
+                <span class="inline-block px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-sm font-medium mr-2 mb-2 border border-slate-200 dark:border-slate-600">Prompt Engineering</span>
+            </div>
+            <div class="mt-6 pt-6 border-t border-slate-100 dark:border-slate-700">
+                <h3 class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-3">Tools & Environment</h3>
+                <div class="flex gap-4 text-slate-600 dark:text-slate-400">
+                    <div class="flex items-center gap-2"><i data-lucide="terminal" class="w-4 h-4"></i> Cursor / VS Code</div>
+                    <div class="flex items-center gap-2"><i data-lucide="github" class="w-4 h-4"></i> GitHub</div>
+                    <div class="flex items-center gap-2"><i data-lucide="brain" class="w-4 h-4"></i> Gemini Canvas</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Works -->
+    <section id="works" class="py-20 px-6 max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold mb-12 text-slate-900 dark:text-slate-100 tracking-tight">Selected Works</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+            
+            <!-- Work 1 -->
+            <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 group">
+                <div class="text-xs font-bold text-blue-600 dark:text-blue-400 mb-2 uppercase tracking-wide">
+                    Event / Team Project
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-slate-900 dark:text-slate-100 group-hover:text-blue-600 transition-colors">
+                    Science Agora 2025 出展
+                </h3>
+                <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm mb-4">
+                    科学技術振興機構（JST）主催のイベントにてセッションを企画・運営。副リーダーとしてチームを牽引し、当日のファシリテーションを担当した。
+                </p>
+                <a href="https://www.jst.go.jp/sis/scienceagora/2025/session/b2510.html" target="_blank" rel="noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline inline-flex items-center gap-1">
+                    See Details <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                </a>
+            </div>
+
+            <!-- Work 2 -->
+            <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 group">
+                <div class="text-xs font-bold text-blue-600 dark:text-blue-400 mb-2 uppercase tracking-wide">
+                    Content Creation
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-slate-900 dark:text-slate-100 group-hover:text-blue-600 transition-colors">
+                    RAG チュートリアル制作
+                </h3>
+                <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm mb-4">
+                    初学者向けにRetrieval-Augmented Generation (RAG) の仕組みと実装方法を解説するチュートリアルを作成。株式会社グラフでのインターン成果物。
+                </p>
+                <a href="https://colab.research.google.com/drive/1i-bOk1_ItWzFmPUHoLKC0NPjnnCg1yQ0?usp=sharing" target="_blank" rel="noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline inline-flex items-center gap-1">
+                    See Details <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                </a>
+            </div>
+
+            <!-- Work 3 -->
+            <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 group">
+                <div class="text-xs font-bold text-blue-600 dark:text-blue-400 mb-2 uppercase tracking-wide">
+                    Web Application
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-slate-900 dark:text-slate-100 group-hover:text-blue-600 transition-colors">
+                    Cypher Profile
+                </h3>
+                <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm mb-4">
+                    自身のスキルや経歴を可視化するプロフィールページ。モダンなフロントエンド技術スタックを用いて実装。
+                </p>
+                <a href="https://cypher.inc/ProfileDetail?id=68cc7b1e25f2d34f1101e909" target="_blank" rel="noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline inline-flex items-center gap-1">
+                    See Details <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 5. Experience -->
+    <section class="py-20 px-6 max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold mb-12 text-slate-900 dark:text-slate-100 tracking-tight">Experience</h2>
+        <div class="relative pl-6 space-y-12">
+            <!-- Timeline Line -->
+            <div class="timeline-line bg-slate-200 dark:bg-slate-700"></div>
+            
+            <!-- Item 1 -->
+            <div class="relative pl-8">
+                <div class="timeline-dot bg-blue-600 dark:bg-blue-500"></div>
+                <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-1">
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100">中央大学 自然言語処理研究室 配属</h3>
+                    <span class="text-sm font-mono text-slate-500 dark:text-slate-400">2026.04 (予定)</span>
+                </div>
+                <p class="text-slate-600 dark:text-slate-400 leading-relaxed">学部4年次より正式配属。専門的な研究活動を開始する。</p>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="relative pl-8">
+                <div class="timeline-dot bg-blue-600 dark:bg-blue-500"></div>
+                <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-1">
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100">株式会社プロパゲート インターン</h3>
+                    <span class="text-sm font-mono text-slate-500 dark:text-slate-400">2025.12 - 現在</span>
+                </div>
+                <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Web制作および開発支援ツールを活用した実装業務。GitHubを用いたチーム開発フローを実践。</p>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="relative pl-8">
+                <div class="timeline-dot bg-blue-600 dark:bg-blue-500"></div>
+                <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-1">
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100">株式会社グラフ インターン</h3>
+                    <span class="text-sm font-mono text-slate-500 dark:text-slate-400">2025.07 - 2025.12</span>
+                </div>
+                <p class="text-slate-600 dark:text-slate-400 leading-relaxed">データサイエンス学習アプリのコンテンツ企画・運営、教材作成。</p>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="relative pl-8">
+                <div class="timeline-dot bg-blue-600 dark:bg-blue-500"></div>
+                <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-1">
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100">短期プログラム参加 (りそな銀行 / AVILEN)</h3>
+                    <span class="text-sm font-mono text-slate-500 dark:text-slate-400">2025.09</span>
+                </div>
+                <p class="text-slate-600 dark:text-slate-400 leading-relaxed">クオンツモデル開発演習および生成AI活用演習に参加。実データを用いた課題解決プロセスを経験。</p>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="relative pl-8">
+                <div class="timeline-dot bg-blue-600 dark:bg-blue-500"></div>
+                <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-1">
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100">個別指導塾 講師</h3>
+                    <span class="text-sm font-mono text-slate-500 dark:text-slate-400">2023.04 - 現在</span>
+                </div>
+                <p class="text-slate-600 dark:text-slate-400 leading-relaxed">独自で考案した苦手対策に特化した演習効率化メソッドを導入し、担当生徒の偏差値を10ヶ月間で30上昇させた</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 6. Contact -->
+    <footer class="bg-slate-900 text-slate-400 py-20 mt-20">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-2xl font-bold text-white mb-8">Get in Touch</h2>
+            <p class="mb-8 max-w-lg mx-auto leading-relaxed">
+                データ分析やプロダクト開発に関するご相談、<br />
+                またはカジュアルな面談など、お気軽にご連絡ください。
             </p>
-          </article>
-          <article class="post">
-            <div class="post__date">2024.05.25</div>
-            <h3>プロダクトの温度感を伝えるマイクロコピー</h3>
-            <p>
-              言葉のトーンを少し変えるだけで、プロダクトの印象は大きく変わります。最近は温かみのある
-              マイクロコピーを研究しています。
+            <div class="flex justify-center gap-6 mb-12">
+                <a href="mailto:your-email@example.com" class="p-4 bg-slate-800 rounded-full hover:bg-blue-600 hover:text-white transition-all duration-300 group" aria-label="Email">
+                    <i data-lucide="mail" class="w-6 h-6 group-hover:scale-110 transition-transform"></i>
+                </a>
+                <a href="https://github.com/your-username" target="_blank" rel="noreferrer" class="p-4 bg-slate-800 rounded-full hover:bg-slate-700 hover:text-white transition-all duration-300 group" aria-label="GitHub">
+                    <i data-lucide="github" class="w-6 h-6 group-hover:scale-110 transition-transform"></i>
+                </a>
+            </div>
+            <p class="text-xs text-slate-600">
+                © <span id="year"></span> Tomoya Ide. Built with React & Tailwind CSS.
             </p>
-          </article>
-          <article class="post">
-            <div class="post__date">2024.05.02</div>
-            <h3>地域イベントで体験した共創の力</h3>
-            <p>
-              下北沢で開催されたまちづくりイベントに参加。住民の声を聞きながらプロトタイプを作る
-              ワークショップがとても刺激的でした。
-            </p>
-          </article>
         </div>
-      </section>
-
-      <section id="contact" class="section section--accent">
-        <div>
-          <h2>Get in Touch</h2>
-          <p>
-            お仕事のご相談やコラボレーションのご提案など、いつでもお気軽にご連絡ください。
-            48時間以内の返信を心がけています。
-          </p>
-        </div>
-        <div class="contact-card">
-          <p class="contact-card__label">Email</p>
-          <a href="mailto:hikari.minami@example.com">hikari.minami@example.com</a>
-          <p class="contact-card__label">Social</p>
-          <div class="contact-card__links">
-            <a href="https://www.instagram.com">Instagram</a>
-            <a href="https://www.linkedin.com">LinkedIn</a>
-            <a href="https://www.behance.net">Behance</a>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <p>© 2024 Hikari Minami. All rights reserved.</p>
     </footer>
-  </body>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Update Year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Dark Mode Logic
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        
+        // Check local storage or system preference
+        const isDark = localStorage.theme === 'dark' || 
+            (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+        // Apply initial theme
+        if (isDark) {
+            html.classList.add('dark');
+        } else {
+            html.classList.remove('dark');
+        }
+
+        // Toggle Theme
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            
+            // Save preference
+            if (html.classList.contains('dark')) {
+                localStorage.theme = 'dark';
+            } else {
+                localStorage.theme = 'light';
+            }
+        });
+    </script>
+</body>
 </html>

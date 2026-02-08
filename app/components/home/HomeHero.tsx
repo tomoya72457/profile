@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function HomeHero() {
   return (
-    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+    <section className="relative min-h-screen flex items-center pt-0 md:pt-20 overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <Image

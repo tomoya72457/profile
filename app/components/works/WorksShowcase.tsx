@@ -15,7 +15,49 @@ export default function WorksShowcase() {
         </div>
 
         <div className="space-y-24">
-          {/* Case 1: n8n Pipeline */}
+          {/* Case 1: Community App */}
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div className="space-y-6">
+              <div className="flex items-center gap-4">
+                <span className="text-accent-green font-mono text-sm">
+                  Long-term Internship
+                </span>
+                <span className="h-px flex-1 bg-slate-700"></span>
+              </div>
+              <h3 className="text-2xl font-bold text-slate-100">
+                初心者向けの学習コンテンツ
+                <br />
+                「RAGチュートリアル」を作成
+              </h3>
+              <p className="text-slate-400 leading-relaxed text-sm">
+                社内ナレッジの標準化を目的とした、Google ColabベースのRAG学習コンテンツを作成しました。
+              </p>
+              <div className="flex flex-wrap gap-2 pt-2">
+                <span className="px-2 py-1 bg-slate-800 text-primary-300 text-xs font-mono rounded border border-slate-700">
+                  Python
+                </span>
+                <span className="px-2 py-1 bg-slate-800 text-primary-300 text-xs font-mono rounded border border-slate-700">
+                  LLM
+                </span>
+                <span className="px-2 py-1 bg-slate-800 text-primary-300 text-xs font-mono rounded border border-slate-700">
+                  Markdown
+                </span>
+              </div>
+            </div>
+            <div className="relative rounded-xl overflow-hidden border border-slate-700 shadow-2xl bg-slate-800 aspect-video">
+              <div className="absolute inset-0 flex items-center justify-center bg-slate-800">
+                <Image
+                  src="/images/process_standardization_concept.png"
+                  alt="Process Comparison"
+                  width={800}
+                  height={450}
+                  className="w-full h-full object-cover opacity-80"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Case 2: n8n Pipeline */}
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="order-2 md:order-1 relative rounded-xl overflow-hidden border border-slate-700 shadow-2xl bg-slate-800 aspect-video">
               <div className="absolute inset-0 flex items-center justify-center bg-slate-800">
@@ -27,7 +69,7 @@ export default function WorksShowcase() {
                   className="w-full h-full object-cover opacity-80"
                 />
                 {/* Overlay Mobile Mockup */}
-                <div className="absolute bottom-4 right-4 w-24 h-48 bg-black rounded border-2 border-slate-600 shadow-xl overflow-hidden">
+                <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-48 h-96 md:-bottom-32 md:w-64 md:h-[32rem] bg-black rounded-lg border-2 border-slate-600 shadow-xl overflow-hidden">
                   <Image
                     src="/images/phone.PNG"
                     alt="Quiz UI"
@@ -41,40 +83,6 @@ export default function WorksShowcase() {
             <div className="order-1 md:order-2 space-y-6">
               <div className="flex items-center gap-4">
                 <span className="text-accent-green font-mono text-sm">
-                  Long-term Internship
-                </span>
-                <span className="h-px flex-1 bg-slate-700"></span>
-              </div>
-              <h3 className="text-2xl font-bold text-slate-100">
-                データサイエンス教材の
-                <br />
-                自動生成パイプライン
-              </h3>
-              <p className="text-slate-400 leading-relaxed text-sm">
-                <strong className="text-slate-200">n8n</strong>
-                によるニュース自動収集と、
-                <strong className="text-slate-200">NotebookLM</strong>
-                を用いたクイズ化フローを構築。リサーチ工数を削減しつつ、コンテンツの鮮度維持を実現しました。
-              </p>
-              <div className="flex flex-wrap gap-2 pt-2">
-                <span className="px-2 py-1 bg-slate-800 text-primary-300 text-xs font-mono rounded border border-slate-700">
-                  n8n
-                </span>
-                <span className="px-2 py-1 bg-slate-800 text-primary-300 text-xs font-mono rounded border border-slate-700">
-                  NotebookLM
-                </span>
-                <span className="px-2 py-1 bg-slate-800 text-primary-300 text-xs font-mono rounded border border-slate-700">
-                  RAG
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* Case 2: Community App */}
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div className="space-y-6">
-              <div className="flex items-center gap-4">
-                <span className="text-accent-green font-mono text-sm">
                   App Development
                 </span>
                 <span className="h-px flex-1 bg-slate-700"></span>
@@ -85,8 +93,10 @@ export default function WorksShowcase() {
                 作問プロセスの標準化
               </h3>
               <p className="text-slate-400 leading-relaxed text-sm">
-                Custom
-                GPTsを活用し、属人化していたクイズ作成フローを標準化。検証プロンプトの設計により、誰でも高品質な問題を作成できる体制を構築しました。
+                <strong className="text-slate-200">Custom GPTs</strong>
+                によるニュース自動収集と、
+                <strong className="text-slate-200">NotebookLM</strong>
+                を用いたクイズ化フローを構築。リサーチ工数を削減しつつ、コンテンツの鮮度維持を実現しました。
               </p>
               <div className="flex flex-wrap gap-2 pt-2">
                 <span className="px-2 py-1 bg-slate-800 text-primary-300 text-xs font-mono rounded border border-slate-700">
@@ -99,23 +109,28 @@ export default function WorksShowcase() {
                   UX Design
                 </span>
               </div>
-              <Link
-                href="https://cypher.inc/App"
-                target="_blank"
-                className="inline-flex items-center gap-2 text-sm text-primary-400"
-              >
-                View Project <ExternalLink className="w-4 h-4" />
-              </Link>
-            </div>
-            <div className="relative rounded-xl overflow-hidden border border-slate-700 shadow-2xl bg-slate-800 aspect-video">
-              <div className="absolute inset-0 flex items-center justify-center bg-slate-800">
-                <Image
-                  src="/images/process_standardization_concept.png"
-                  alt="Process Comparison"
-                  width={800}
-                  height={450}
-                  className="w-full h-full object-cover opacity-80"
-                />
+              <div className="flex flex-wrap items-center gap-4">
+                <Link
+                  href="https://cypher.inc/App"
+                  target="_blank"
+                  className="inline-flex items-center gap-2 text-sm text-primary-400 hover:text-primary-300 transition-colors"
+                >
+                  View Project <ExternalLink className="w-4 h-4" />
+                </Link>
+                <Link
+                  href="https://cypher.inc/ProfileDetail?id=68cc7b1e25f2d34f1101e909"
+                  target="_blank"
+                  className="inline-flex items-center gap-2 text-sm text-primary-400 hover:text-primary-300 transition-colors"
+                >
+                  View Profile <ExternalLink className="w-4 h-4" />
+                </Link>
+                <Link
+                  href="https://apps.apple.com/jp/app/cypher/id6748674526"
+                  target="_blank"
+                  className="inline-flex items-center gap-2 text-sm text-primary-400 hover:text-primary-300 transition-colors"
+                >
+                  View App <ExternalLink className="w-4 h-4" />
+                </Link>
               </div>
             </div>
           </div>

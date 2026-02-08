@@ -137,7 +137,32 @@ export default function WorksShowcase() {
 
           {/* Case 3: Education Method */}
           <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div className="order-2 md:order-1 relative rounded-xl overflow-hidden border border-slate-700 shadow-2xl bg-slate-800 aspect-video">
+            <div className="space-y-6">
+              <div className="flex items-center gap-4">
+                <span className="text-accent-green font-mono text-sm">
+                  Educational Logic
+                </span>
+                <span className="h-px flex-1 bg-slate-700"></span>
+              </div>
+              <h3 className="text-2xl font-bold text-slate-100">
+                定性評価の構造化による
+                <br />
+                偏差値30UPメソッド
+              </h3>
+              <p className="text-slate-400 leading-relaxed text-sm">
+                「1:自力正解 〜
+                5:捨て問」の5段階指標を導入し、生徒の理解度をデータ化。復習の優先度をアルゴリズム的に決定することで、短期間での劇的な成果を実現しました。
+              </p>
+              <div className="flex flex-wrap gap-2 pt-2">
+                <span className="px-2 py-1 bg-slate-800 text-primary-300 text-xs font-mono rounded border border-slate-700">
+                  Optimization
+                </span>
+                <span className="px-2 py-1 bg-slate-800 text-primary-300 text-xs font-mono rounded border border-slate-700">
+                  Data Driven
+                </span>
+              </div>
+            </div>
+            <div className="relative rounded-xl overflow-hidden border border-slate-700 shadow-2xl bg-slate-800 aspect-video">
               <div className="absolute inset-0 flex items-center justify-center bg-slate-800">
                 <div className="text-center p-8 w-full h-full flex flex-col items-center justify-center bg-gradient-to-tr from-slate-900 to-slate-800">
                   <div className="text-6xl font-bold text-accent-green mb-2">+30</div>
@@ -161,31 +186,6 @@ export default function WorksShowcase() {
                     />
                   </svg>
                 </div>
-              </div>
-            </div>
-            <div className="order-1 md:order-2 space-y-6">
-              <div className="flex items-center gap-4">
-                <span className="text-accent-green font-mono text-sm">
-                  Educational Logic
-                </span>
-                <span className="h-px flex-1 bg-slate-700"></span>
-              </div>
-              <h3 className="text-2xl font-bold text-slate-100">
-                定性評価の構造化による
-                <br />
-                偏差値30UPメソッド
-              </h3>
-              <p className="text-slate-400 leading-relaxed text-sm">
-                「1:自力正解 〜
-                5:捨て問」の5段階指標を導入し、生徒の理解度をデータ化。復習の優先度をアルゴリズム的に決定することで、短期間での劇的な成果を実現しました。
-              </p>
-              <div className="flex flex-wrap gap-2 pt-2">
-                <span className="px-2 py-1 bg-slate-800 text-primary-300 text-xs font-mono rounded border border-slate-700">
-                  Optimization
-                </span>
-                <span className="px-2 py-1 bg-slate-800 text-primary-300 text-xs font-mono rounded border border-slate-700">
-                  Data Driven
-                </span>
               </div>
             </div>
           </div>

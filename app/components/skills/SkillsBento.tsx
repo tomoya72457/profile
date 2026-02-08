@@ -30,7 +30,7 @@ export default function SkillsBento() {
               </div>
 
               <div className="grid grid-cols-2 gap-3">
-                <div className="bg-slate-900/50 rounded-lg p-3 border border-white/10 hover:border-primary-500/50 transition-colors">
+                <div className="bg-slate-900/50 rounded-lg p-3 border border-white/10">
                   <div className="font-bold text-white text-sm mb-1">
                     OpenAI Custom GPTs
                   </div>
@@ -38,20 +38,20 @@ export default function SkillsBento() {
                     Interview Prep, Quiz Gen
                   </div>
                 </div>
-                <div className="bg-slate-900/50 rounded-lg p-3 border border-white/10 hover:border-primary-500/50 transition-colors">
+                <div className="bg-slate-900/50 rounded-lg p-3 border border-white/10">
                   <div className="font-bold text-white text-sm mb-1">NotebookLM</div>
                   <div className="text-[10px] text-primary-300 font-mono">
                     Curriculum Design
                   </div>
                 </div>
-                <div className="bg-slate-900/50 rounded-lg p-3 border border-white/10 hover:border-primary-500/50 transition-colors">
-                  <div className="font-bold text-white text-sm mb-1">n8n</div>
+                <div className="bg-slate-900/50 rounded-lg p-3 border border-white/10">
+                  <div className="font-bold text-white text-sm mb-1">n8n / Dify</div>
                   <div className="text-[10px] text-primary-300 font-mono">
                     News Pipeline Automation
                   </div>
                 </div>
-                <div className="bg-slate-900/50 rounded-lg p-3 border border-white/10 hover:border-primary-500/50 transition-colors">
-                  <div className="font-bold text-white text-sm mb-1">Cursor / Dify</div>
+                <div className="bg-slate-900/50 rounded-lg p-3 border border-white/10">
+                  <div className="font-bold text-white text-sm mb-1">Cursor / Antigravity</div>
                   <div className="text-[10px] text-primary-300 font-mono">
                     Development Efficiency
                   </div>
@@ -60,17 +60,17 @@ export default function SkillsBento() {
             </div>
           </div>
 
-          {/* Python */}
-          <div className="md:col-span-1 glass-panel rounded-2xl p-6 flex flex-col justify-between hover:bg-slate-800 transition-colors">
+          {/* Python / R */}
+          <div className="md:col-span-1 glass-panel rounded-2xl p-6 flex flex-col justify-between">
             <Code2 className="w-8 h-8 text-slate-500" />
             <div>
-              <h3 className="text-lg font-bold text-slate-200 mb-1">Python</h3>
+              <h3 className="text-lg font-bold text-slate-200 mb-1">Python / R</h3>
               <p className="text-xs text-slate-500 font-mono">Data Analysis / NLP</p>
             </div>
           </div>
 
           {/* React/TS */}
-          <div className="md:col-span-1 glass-panel rounded-2xl p-6 flex flex-col justify-between hover:bg-slate-800 transition-colors">
+          <div className="md:col-span-1 glass-panel rounded-2xl p-6 flex flex-col justify-between">
             <Layout className="w-8 h-8 text-slate-500" />
             <div>
               <h3 className="text-lg font-bold text-slate-200 mb-1">React / TS</h3>
@@ -79,7 +79,7 @@ export default function SkillsBento() {
           </div>
 
           {/* Research */}
-          <div className="md:col-span-2 glass-panel rounded-2xl p-6 flex flex-col justify-center gap-4 hover:bg-slate-800 transition-colors">
+          <div className="md:col-span-2 glass-panel rounded-2xl p-6 flex flex-col justify-center gap-4">
             <h3 className="text-lg font-bold text-slate-200 flex items-center gap-2">
               <Microscope className="w-5 h-5 text-accent-green" />
               Research & Theory
@@ -101,7 +101,7 @@ export default function SkillsBento() {
           </div>
 
           {/* Git/Tools */}
-          <div className="md:col-span-2 lg:col-span-1 glass-panel rounded-2xl p-6 flex flex-col justify-between hover:bg-slate-800 transition-colors">
+          <div className="md:col-span-2 lg:col-span-1 glass-panel rounded-2xl p-6 flex flex-col justify-between">
             <GitBranch className="w-8 h-8 text-slate-500" />
             <div>
               <h3 className="text-lg font-bold text-slate-200 mb-1">Git / GitHub</h3>

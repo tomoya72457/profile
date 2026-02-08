@@ -17,15 +17,15 @@ export default function AboutContent() {
         <div className="grid md:grid-cols-12 gap-12 items-center">
           {/* Profile Image / Card */}
           <div className="md:col-span-4">
-            <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-primary-600 to-accent-green rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+            <div className="relative">
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary-600 to-accent-green rounded-lg blur opacity-25"></div>
               <div className="relative aspect-[3/4] bg-slate-800 rounded-lg overflow-hidden border border-slate-700 flex items-center justify-center">
                 <Image
-                  src="https://placehold.co/400x533/1e293b/94a3b8?text=Portrait"
+                  src="/images/tomoya.jpg"
                   alt="Tomoya Ide"
                   width={400}
                   height={533}
-                  className="w-full h-full object-cover grayscale mix-blend-luminosity hover:grayscale-0 transition-all duration-500 opacity-80 hover:opacity-100"
+                  className="w-full h-full object-cover"
                 />
                 <div className="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/90 to-transparent">
                   <div className="font-bold text-white">Tomoya Ide</div>

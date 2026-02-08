@@ -24,29 +24,29 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
         <Link
           href="#"
-          className="font-mono font-bold text-lg tracking-tight flex items-center gap-2 text-white hover:text-primary-400 transition-colors"
+          className="font-mono font-bold text-lg tracking-tight flex items-center gap-2 text-white"
         >
           <span className="text-primary-500">&lt;</span>TomoyaIde
           <span className="text-primary-500">/&gt;</span>
         </Link>
         <div className="flex items-center gap-8">
           <div className="hidden md:flex gap-8 text-sm font-medium text-slate-300">
-            <Link href="#about" className="hover:text-primary-400 transition-colors">
+            <Link href="#about">
               About
             </Link>
-            <Link href="#skills" className="hover:text-primary-400 transition-colors">
+            <Link href="#skills">
               Skills
             </Link>
-            <Link href="#works" className="hover:text-primary-400 transition-colors">
+            <Link href="#works">
               Works
             </Link>
-            <Link href="#future" className="hover:text-primary-400 transition-colors">
+            <Link href="#future">
               Vision
             </Link>
           </div>
           <Link
             href="#contact"
-            className="hidden md:inline-flex px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white text-sm font-medium rounded-lg border border-slate-700 transition-all"
+            className="hidden md:inline-flex px-4 py-2 bg-slate-800 text-white text-sm font-medium rounded-lg border border-slate-700"
           >
             Contact
           </Link>

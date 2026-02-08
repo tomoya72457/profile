@@ -16,20 +16,20 @@ export default function WorksShowcase() {
 
         <div className="space-y-24">
           {/* Case 1: n8n Pipeline */}
-          <div className="group grid md:grid-cols-2 gap-8 items-center">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="order-2 md:order-1 relative rounded-xl overflow-hidden border border-slate-700 shadow-2xl bg-slate-800 aspect-video">
               <div className="absolute inset-0 flex items-center justify-center bg-slate-800">
                 <Image
-                  src="https://placehold.co/800x450/1e293b/475569?text=n8n+Automation+Workflow"
+                  src="/images/n8n_automation_workflow.png"
                   alt="n8n Workflow"
                   width={800}
                   height={450}
-                  className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-cover opacity-80"
                 />
                 {/* Overlay Mobile Mockup */}
                 <div className="absolute bottom-4 right-4 w-24 h-48 bg-black rounded border-2 border-slate-600 shadow-xl overflow-hidden">
                   <Image
-                    src="https://placehold.co/150x300/334155/cbd5e1?text=Quiz+UI"
+                    src="/images/quiz_app_ui_mockup.png"
                     alt="Quiz UI"
                     width={150}
                     height={300}
@@ -45,7 +45,7 @@ export default function WorksShowcase() {
                 </span>
                 <span className="h-px flex-1 bg-slate-700"></span>
               </div>
-              <h3 className="text-2xl font-bold text-slate-100 group-hover:text-primary-400 transition-colors">
+              <h3 className="text-2xl font-bold text-slate-100">
                 データサイエンス教材の
                 <br />
                 自動生成パイプライン
@@ -71,7 +71,7 @@ export default function WorksShowcase() {
           </div>
 
           {/* Case 2: Community App */}
-          <div className="group grid md:grid-cols-2 gap-8 items-center">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="space-y-6">
               <div className="flex items-center gap-4">
                 <span className="text-accent-green font-mono text-sm">
@@ -79,7 +79,7 @@ export default function WorksShowcase() {
                 </span>
                 <span className="h-px flex-1 bg-slate-700"></span>
               </div>
-              <h3 className="text-2xl font-bold text-slate-100 group-hover:text-primary-400 transition-colors">
+              <h3 className="text-2xl font-bold text-slate-100">
                 Cypher Community:
                 <br />
                 作問プロセスの標準化
@@ -102,7 +102,7 @@ export default function WorksShowcase() {
               <Link
                 href="https://cypher.inc/App"
                 target="_blank"
-                className="inline-flex items-center gap-2 text-sm text-primary-400 hover:text-primary-300"
+                className="inline-flex items-center gap-2 text-sm text-primary-400"
               >
                 View Project <ExternalLink className="w-4 h-4" />
               </Link>
@@ -110,18 +110,18 @@ export default function WorksShowcase() {
             <div className="relative rounded-xl overflow-hidden border border-slate-700 shadow-2xl bg-slate-800 aspect-video">
               <div className="absolute inset-0 flex items-center justify-center bg-slate-800">
                 <Image
-                  src="https://placehold.co/800x450/1e293b/475569?text=Before(Manual)+vs+After(GPT)"
+                  src="/images/process_standardization_concept.png"
                   alt="Process Comparison"
                   width={800}
                   height={450}
-                  className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-cover opacity-80"
                 />
               </div>
             </div>
           </div>
 
           {/* Case 3: Education Method */}
-          <div className="group grid md:grid-cols-2 gap-8 items-center">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="order-2 md:order-1 relative rounded-xl overflow-hidden border border-slate-700 shadow-2xl bg-slate-800 aspect-video">
               <div className="absolute inset-0 flex items-center justify-center bg-slate-800">
                 <div className="text-center p-8 w-full h-full flex flex-col items-center justify-center bg-gradient-to-tr from-slate-900 to-slate-800">
@@ -155,7 +155,7 @@ export default function WorksShowcase() {
                 </span>
                 <span className="h-px flex-1 bg-slate-700"></span>
               </div>
-              <h3 className="text-2xl font-bold text-slate-100 group-hover:text-primary-400 transition-colors">
+              <h3 className="text-2xl font-bold text-slate-100">
                 定性評価の構造化による
                 <br />
                 偏差値30UPメソッド

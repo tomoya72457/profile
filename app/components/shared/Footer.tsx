@@ -11,12 +11,12 @@ export default function Footer() {
         <Link
           href="https://github.com/tomoya72457"
           target="_blank"
-          className="inline-block group"
+          className="inline-block"
         >
-          <div className="w-20 h-20 bg-slate-800 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-white group-hover:scale-110 transition-all duration-300 border border-slate-700 group-hover:border-white shadow-lg">
-            <Github className="w-10 h-10 text-white group-hover:text-black transition-colors" />
+          <div className="w-20 h-20 bg-slate-800 rounded-full flex items-center justify-center mx-auto mb-4 border border-slate-700 shadow-lg">
+            <Github className="w-10 h-10 text-white" />
           </div>
-          <span className="font-mono text-slate-400 group-hover:text-white transition-colors">
+          <span className="font-mono text-slate-400">
             github.com/tomoya72457
           </span>
         </Link>

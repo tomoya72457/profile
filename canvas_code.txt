@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>井手智也 | Portfolio - Tech & Logic</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Inter"', '"Noto Sans JP"', 'sans-serif'],
+                        serif: ['"Noto Serif JP"', 'serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        slate: {
+                            800: '#1e293b',
+                            900: '#0f172a',
+                            950: '#020617',
+                        },
+                        primary: {
+                            400: '#60a5fa', // Light Blue
+                            500: '#3b82f6', // Royal Blue
+                            600: '#2563eb',
+                        },
+                        accent: {
+                            green: '#10b981', // Emerald
+                            amber: '#f59e0b', // Amber
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-delayed': 'float 6s ease-in-out 3s infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px)",
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Custom Styles */
+        body {
+            background-color: #020617; /* Slate 950 */
+            color: #f8fafc; /* Slate 50 */
+        }
+        
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-highlight {
+            background: rgba(59, 130, 246, 0.1);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.15);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bg-grid-slate {
+            background-size: 40px 40px;
+            mask-image: linear-gradient(to bottom, transparent, black, transparent);
+            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
+        }
+
+        /* Syntax Highlighting Mock */
+        .token-keyword { color: #c678dd; }
+        .token-function { color: #61afef; }
+        .token-string { color: #98c379; }
+        .token-comment { color: #5c6370; font-style: italic; }
+        
+        /* Node Animation Canvas */
+        #neural-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.4;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-primary-500 selection:text-white overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-panel border-b-0 border-white/5 top-0 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
+            <a href="#" class="font-mono font-bold text-lg tracking-tight flex items-center gap-2 text-white hover:text-primary-400 transition-colors">
+                <span class="text-primary-500">&lt;</span>TomoyaIde<span class="text-primary-500">/&gt;</span>
+            </a>
+            <div class="flex items-center gap-8">
+                <div class="hidden md:flex gap-8 text-sm font-medium text-slate-300">
+                    <a href="#about" class="hover:text-primary-400 transition-colors">About</a>
+                    <a href="#skills" class="hover:text-primary-400 transition-colors">Skills</a>
+                    <a href="#works" class="hover:text-primary-400 transition-colors">Works</a>
+                    <a href="#future" class="hover:text-primary-400 transition-colors">Vision</a>
+                </div>
+                <a href="#contact" class="hidden md:inline-flex px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white text-sm font-medium rounded-lg border border-slate-700 transition-all">
+                    Contact
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 1. Hero Section -->
+    <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 bg-grid-pattern opacity-20"></div>
+        <div class="absolute top-20 right-0 w-[500px] h-[500px] bg-primary-600/20 rounded-full blur-[100px] animate-pulse-slow"></div>
+        <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent-green/10 rounded-full blur-[80px]"></div>
+        
+        <!-- Particles Container (JS will populate this) -->
+        <div id="particles-js" class="absolute inset-0 z-0 pointer-events-none"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <!-- Left: Copy -->
+            <div class="space-y-8 animate-float">
+                <div class="space-y-4">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 text-xs font-mono font-medium text-primary-400 bg-primary-900/30 rounded-full border border-primary-800/50">
+                        <span class="w-2 h-2 rounded-full bg-accent-green animate-pulse"></span>
+                        Status: Open to Work (2027)
+                    </div>
+                    <h1 class="text-4xl md:text-6xl font-bold leading-tight tracking-tight">
+                        <span class="text-gradient">データサイエンス</span> × <br>
+                        Web開発 × 生成AI活用
+                    </h1>
+                    <p class="text-xl md:text-2xl font-light text-slate-300">
+                        潜在的ニーズを<span class="font-bold text-white border-b-2 border-primary-500">実装</span>するエンジニア
+                    </p>
+                </div>
+                <p class="text-slate-400 leading-relaxed max-w-lg">
+                    定性的な情報を定量化し、課題解決の「再現性」を生み出す。<br>
+                    自然言語処理の研究知見と、最新のAIエージェント技術を統合し、実用的なソリューションを構築します。
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                    <a href="#works" class="group relative px-8 py-3.5 bg-primary-600 hover:bg-primary-500 text-white font-bold rounded-lg transition-all shadow-lg shadow-primary-900/50 overflow-hidden">
+                        <span class="relative z-10 flex items-center gap-2">
+                            制作・開発実績を見る
+                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        </span>
+                    </a>
+                    <a href="https://github.com/tomoya72457" target="_blank" class="px-8 py-3.5 bg-transparent border border-slate-600 hover:border-slate-400 text-slate-300 hover:text-white font-medium rounded-lg transition-all flex items-center gap-2">
+                        <i data-lucide="github" class="w-5 h-5"></i>
+                        GitHubを見る
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right: Visual Composite -->
+            <div class="relative hidden lg:block h-[500px]">
+                <!-- Composite Isometric Visual Mockup -->
+                <div class="relative w-full h-full perspective-1000">
+                    <!-- Layer 1: VS Code Editor -->
+                    <div class="absolute top-10 left-10 w-full max-w-md bg-[#1e1e1e] rounded-lg shadow-2xl border border-slate-700 p-4 transform rotate-y-[-10deg] rotate-x-[5deg] transition-transform hover:rotate-0 duration-500 z-10 animate-float">
+                        <div class="flex gap-2 mb-4 border-b border-white/10 pb-2">
+                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            <span class="ml-4 text-xs text-slate-500 font-mono">pipeline.py</span>
+                        </div>
+                        <div class="font-mono text-xs md:text-sm leading-relaxed">
+                            <div><span class="token-keyword">import</span> pandas <span class="token-keyword">as</span> pd</div>
+                            <div><span class="token-keyword">from</span> transformers <span class="token-keyword">import</span> pipeline</div>
+                            <br>
+                            <div><span class="token-comment"># Initialize Sentiment Analysis</span></div>
+                            <div>nlp = pipeline(<span class="token-string">"sentiment-analysis"</span>)</div>
+                            <br>
+                            <div><span class="token-keyword">def</span> <span class="token-function">analyze_needs</span>(data):</div>
+                            <div>&nbsp;&nbsp;insights = nlp(data)</div>
+                            <div>&nbsp;&nbsp;<span class="token-keyword">return</span> insights</div>
+                            <br>
+                            <!-- Completion Popup Mock -->
+                            <div class="bg-[#252526] border border-slate-600 p-2 rounded shadow-lg w-48 mt-1">
+                                <div class="text-slate-300">optimize_workflow</div>
+                                <div class="text-primary-400 bg-primary-900/30 px-1">create_structure</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Layer 2: Data Graph (Floating) -->
+                    <div class="absolute top-0 right-0 w-64 h-48 glass-highlight rounded-xl p-4 transform translate-z-20 animate-float-delayed z-20 flex flex-col justify-center items-center">
+                        <div class="text-xs text-primary-300 font-mono mb-2 self-start">Engagement Score</div>
+                        <div class="flex items-end gap-2 h-24 w-full px-2">
+                            <div class="w-1/5 bg-primary-500/30 h-[40%] rounded-t"></div>
+                            <div class="w-1/5 bg-primary-500/50 h-[60%] rounded-t"></div>
+                            <div class="w-1/5 bg-primary-500/70 h-[45%] rounded-t"></div>
+                            <div class="w-1/5 bg-primary-500 h-[90%] rounded-t relative">
+                                <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-accent-green text-black text-[10px] font-bold px-1.5 py-0.5 rounded">+30%</div>
+                            </div>
+                            <div class="w-1/5 bg-primary-400 h-[75%] rounded-t"></div>
+                        </div>
+                    </div>
+
+                    <!-- Layer 3: n8n Node (Floating) -->
+                    <div class="absolute bottom-20 right-10 w-48 bg-white text-slate-900 rounded-lg shadow-xl p-3 transform translate-z-30 z-30 animate-float">
+                        <div class="flex items-center gap-2 mb-2">
+                            <div class="w-6 h-6 bg-[#ff6d5a] rounded flex items-center justify-center text-white text-xs font-bold">n8n</div>
+                            <span class="text-xs font-bold">Webhook</span>
+                        </div>
+                        <div class="h-1 w-full bg-slate-200 rounded overflow-hidden">
+                            <div class="h-full bg-green-500 w-full animate-pulse"></div>
+                        </div>
+                        <div class="mt-2 text-[10px] text-slate-500 flex justify-between">
+                            <span>Status: Active</span>
+                            <span class="text-green-600">● 200 OK</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Connection Lines (CSS Lines) -->
+                    <svg class="absolute inset-0 w-full h-full pointer-events-none z-0" style="transform: rotateY(-10deg) rotateX(5deg);">
+                        <line x1="40%" y1="40%" x2="70%" y2="20%" stroke="#3b82f6" stroke-width="2" stroke-dasharray="5,5" class="opacity-50" />
+                        <line x1="40%" y1="60%" x2="70%" y2="70%" stroke="#3b82f6" stroke-width="2" stroke-dasharray="5,5" class="opacity-50" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. About Section (Process Diagram) -->
+    <section id="about" class="py-24 bg-slate-900 relative">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-primary-500">01.</span> About
+                </h2>
+                <p class="text-slate-400 max-w-2xl">
+                    塾講師としての原体験から現在に至るまで、一貫して「定性情報の定量化」と「仕組み化」に取り組んでいます。
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-12 gap-12 items-center">
+                <!-- Profile Image / Card -->
+                <div class="md:col-span-4">
+                    <div class="relative group">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-primary-600 to-accent-green rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+                        <div class="relative aspect-[3/4] bg-slate-800 rounded-lg overflow-hidden border border-slate-700 flex items-center justify-center">
+                             <!-- Placeholder for Portrait -->
+                             <img src="https://placehold.co/400x533/1e293b/94a3b8?text=Portrait" alt="Tomoya Ide" class="w-full h-full object-cover grayscale mix-blend-luminosity hover:grayscale-0 transition-all duration-500 opacity-80 hover:opacity-100">
+                             <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/90 to-transparent">
+                                <div class="font-bold text-white">Tomoya Ide</div>
+                                <div class="text-xs text-primary-400 font-mono">Data Science Student</div>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Process Diagram -->
+                <div class="md:col-span-8 space-y-12">
+                    <div class="glass-panel rounded-xl p-8 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 p-4 opacity-10">
+                            <i data-lucide="cpu" class="w-24 h-24"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-8 text-center md:text-left">Thinking Process</h3>
+                        
+                        <!-- Diagram -->
+                        <div class="flex flex-col md:flex-row items-center justify-between gap-4 md:gap-8 relative z-10">
+                            <!-- Input -->
+                            <div class="text-center w-full">
+                                <div class="h-24 w-24 mx-auto bg-slate-800 rounded-full border border-slate-600 flex items-center justify-center mb-4 relative">
+                                    <!-- Chaotic Dots -->
+                                    <div class="absolute w-2 h-2 bg-slate-400 rounded-full top-6 left-6"></div>
+                                    <div class="absolute w-2 h-2 bg-slate-500 rounded-full bottom-8 right-6"></div>
+                                    <div class="absolute w-1.5 h-1.5 bg-slate-300 rounded-full top-8 right-8"></div>
+                                    <i data-lucide="cloud" class="w-8 h-8 text-slate-400"></i>
+                                </div>
+                                <h4 class="font-bold text-slate-200">Input</h4>
+                                <p class="text-xs text-slate-500 mt-1">定性データ・曖昧な理解度</p>
+                            </div>
+
+                            <!-- Arrow -->
+                            <div class="hidden md:block">
+                                <i data-lucide="arrow-right" class="w-6 h-6 text-slate-600"></i>
+                            </div>
+
+                            <!-- Process -->
+                            <div class="text-center w-full">
+                                <div class="h-24 w-24 mx-auto bg-slate-800 rounded-full border border-primary-500/50 flex items-center justify-center mb-4 shadow-[0_0_15px_rgba(59,130,246,0.3)]">
+                                    <i data-lucide="filter" class="w-8 h-8 text-primary-400"></i>
+                                </div>
+                                <h4 class="font-bold text-primary-400">Process</h4>
+                                <p class="text-xs text-slate-500 mt-1">数値化・BERT分析・構造化</p>
+                            </div>
+
+                            <!-- Arrow -->
+                            <div class="hidden md:block">
+                                <i data-lucide="arrow-right" class="w-6 h-6 text-slate-600"></i>
+                            </div>
+
+                            <!-- Output -->
+                            <div class="text-center w-full">
+                                <div class="h-24 w-24 mx-auto bg-slate-800 rounded-full border border-accent-green/50 flex items-center justify-center mb-4 shadow-[0_0_15px_rgba(16,185,129,0.3)]">
+                                    <div class="grid grid-cols-2 gap-1">
+                                        <div class="w-3 h-3 bg-accent-green rounded-sm"></div>
+                                        <div class="w-3 h-3 bg-accent-green rounded-sm"></div>
+                                        <div class="w-3 h-3 bg-accent-green rounded-sm"></div>
+                                        <div class="w-3 h-3 bg-accent-green rounded-sm"></div>
+                                    </div>
+                                </div>
+                                <h4 class="font-bold text-accent-green">Output</h4>
+                                <p class="text-xs text-slate-500 mt-1">偏差値UP・再現性ある解決</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="prose prose-invert max-w-none text-slate-400 text-sm md:text-base leading-loose">
+                        <p>
+                            個別指導塾では、生徒の「わかったつもり」という曖昧な状態を5段階指標で数値化し、学習の優先順位を明確にしました。
+                            この<strong class="text-white">「見えないものを構造化する」</strong>アプローチは、現在の自然言語処理（NLP）研究や、生成AIを用いた業務プロセスの設計にも通底しています。
+                            単にコードを書くだけでなく、その前段階にある「課題の本質的な定義」と、実装後の「定着」までをデザインします。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Skills Section (Bento Grid) -->
+    <section id="skills" class="py-24 bg-slate-950">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-primary-500">02.</span> Skills
+                </h2>
+                <p class="text-slate-400">Technical Stack & Tools</p>
+            </div>
+
+            <!-- Bento Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 auto-rows-[180px]">
+                
+                <!-- Gen AI (Featured Highlight) -->
+                <div class="md:col-span-2 lg:col-span-2 row-span-2 glass-highlight rounded-2xl p-6 relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-gradient-to-br from-primary-500/10 via-transparent to-transparent opacity-50"></div>
+                    <div class="relative z-10 h-full flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-2 mb-4">
+                                <i data-lucide="sparkles" class="text-accent-amber w-6 h-6"></i>
+                                <h3 class="text-xl font-bold text-white">Generative AI & Automation</h3>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-6 leading-relaxed">
+                                私の最大の強みは、AIを「使う」だけでなく、ワークフローに組み込み「自動化」する設計力です。
+                            </p>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="bg-slate-900/50 rounded-lg p-3 border border-white/10 hover:border-primary-500/50 transition-colors">
+                                <div class="font-bold text-white text-sm mb-1">OpenAI Custom GPTs</div>
+                                <div class="text-[10px] text-primary-300 font-mono">Interview Prep, Quiz Gen</div>
+                            </div>
+                            <div class="bg-slate-900/50 rounded-lg p-3 border border-white/10 hover:border-primary-500/50 transition-colors">
+                                <div class="font-bold text-white text-sm mb-1">NotebookLM</div>
+                                <div class="text-[10px] text-primary-300 font-mono">Curriculum Design</div>
+                            </div>
+                            <div class="bg-slate-900/50 rounded-lg p-3 border border-white/10 hover:border-primary-500/50 transition-colors">
+                                <div class="font-bold text-white text-sm mb-1">n8n</div>
+                                <div class="text-[10px] text-primary-300 font-mono">News Pipeline Automation</div>
+                            </div>
+                            <div class="bg-slate-900/50 rounded-lg p-3 border border-white/10 hover:border-primary-500/50 transition-colors">
+                                <div class="font-bold text-white text-sm mb-1">Cursor / Dify</div>
+                                <div class="text-[10px] text-primary-300 font-mono">Development Efficiency</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Python -->
+                <div class="md:col-span-1 glass-panel rounded-2xl p-6 flex flex-col justify-between hover:bg-slate-800 transition-colors">
+                    <i data-lucide="code-2" class="w-8 h-8 text-slate-500"></i>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-200 mb-1">Python</h3>
+                        <p class="text-xs text-slate-500 font-mono">Data Analysis / NLP</p>
+                    </div>
+                </div>
+
+                <!-- React/TS -->
+                <div class="md:col-span-1 glass-panel rounded-2xl p-6 flex flex-col justify-between hover:bg-slate-800 transition-colors">
+                    <i data-lucide="layout" class="w-8 h-8 text-slate-500"></i>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-200 mb-1">React / TS</h3>
+                        <p class="text-xs text-slate-500 font-mono">Frontend Development</p>
+                    </div>
+                </div>
+
+                <!-- Research -->
+                <div class="md:col-span-2 glass-panel rounded-2xl p-6 flex flex-col justify-center gap-4 hover:bg-slate-800 transition-colors">
+                    <h3 class="text-lg font-bold text-slate-200 flex items-center gap-2">
+                        <i data-lucide="microscope" class="w-5 h-5 text-accent-green"></i>
+                        Research & Theory
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-slate-800 rounded-full text-xs text-slate-300 border border-slate-700">BERT</span>
+                        <span class="px-3 py-1 bg-slate-800 rounded-full text-xs text-slate-300 border border-slate-700">Natural Language Processing</span>
+                        <span class="px-3 py-1 bg-slate-800 rounded-full text-xs text-slate-300 border border-slate-700">RAG System</span>
+                        <span class="px-3 py-1 bg-slate-800 rounded-full text-xs text-slate-300 border border-slate-700">Statistics</span>
+                    </div>
+                </div>
+
+                <!-- Git/Tools -->
+                <div class="md:col-span-2 lg:col-span-1 glass-panel rounded-2xl p-6 flex flex-col justify-between hover:bg-slate-800 transition-colors">
+                    <i data-lucide="git-branch" class="w-8 h-8 text-slate-500"></i>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-200 mb-1">Git / GitHub</h3>
+                        <p class="text-xs text-slate-500 font-mono">Team Collaboration</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Works Section -->
+    <section id="works" class="py-24 bg-slate-900 relative overflow-hidden">
+        <div class="absolute inset-0 bg-grid-slate opacity-20"></div>
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <div class="mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-primary-500">03.</span> Works
+                </h2>
+                <p class="text-slate-400">Logic & Implementation</p>
+            </div>
+
+            <div class="space-y-24">
+                
+                <!-- Case 1: n8n Pipeline -->
+                <div class="group grid md:grid-cols-2 gap-8 items-center">
+                    <div class="order-2 md:order-1 relative rounded-xl overflow-hidden border border-slate-700 shadow-2xl bg-slate-800 aspect-video">
+                        <!-- Main Visual: n8n Workflow Placeholder -->
+                        <div class="absolute inset-0 flex items-center justify-center bg-slate-800">
+                             <img src="https://placehold.co/800x450/1e293b/475569?text=n8n+Automation+Workflow" alt="n8n Workflow" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500">
+                             <!-- Overlay Mobile Mockup -->
+                             <div class="absolute bottom-4 right-4 w-24 h-48 bg-black rounded border-2 border-slate-600 shadow-xl overflow-hidden">
+                                <img src="https://placehold.co/150x300/334155/cbd5e1?text=Quiz+UI" alt="Quiz UI" class="w-full h-full object-cover">
+                             </div>
+                        </div>
+                    </div>
+                    <div class="order-1 md:order-2 space-y-6">
+                        <div class="flex items-center gap-4">
+                            <span class="text-accent-green font-mono text-sm">Long-term Internship</span>
+                            <span class="h-px flex-1 bg-slate-700"></span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-100 group-hover:text-primary-400 transition-colors">
+                            データサイエンス教材の<br>自動生成パイプライン
+                        </h3>
+                        <p class="text-slate-400 leading-relaxed text-sm">
+                            <strong class="text-slate-200">n8n</strong>によるニュース自動収集と、<strong class="text-slate-200">NotebookLM</strong>を用いたクイズ化フローを構築。リサーチ工数を削減しつつ、コンテンツの鮮度維持を実現しました。
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="px-2 py-1 bg-slate-800 text-primary-300 text-xs font-mono rounded border border-slate-700">n8n</span>
+                            <span class="px-2 py-1 bg-slate-800 text-primary-300 text-xs font-mono rounded border border-slate-700">NotebookLM</span>
+                            <span class="px-2 py-1 bg-slate-800 text-primary-300 text-xs font-mono rounded border border-slate-700">RAG</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 2: Community App -->
+                <div class="group grid md:grid-cols-2 gap-8 items-center">
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4">
+                            <span class="text-accent-green font-mono text-sm">App Development</span>
+                            <span class="h-px flex-1 bg-slate-700"></span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-100 group-hover:text-primary-400 transition-colors">
+                            Cypher Community:<br>作問プロセスの標準化
+                        </h3>
+                        <p class="text-slate-400 leading-relaxed text-sm">
+                            Custom GPTsを活用し、属人化していたクイズ作成フローを標準化。検証プロンプトの設計により、誰でも高品質な問題を作成できる体制を構築しました。
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="px-2 py-1 bg-slate-800 text-primary-300 text-xs font-mono rounded border border-slate-700">Custom GPTs</span>
+                            <span class="px-2 py-1 bg-slate-800 text-primary-300 text-xs font-mono rounded border border-slate-700">Prompt Engineering</span>
+                            <span class="px-2 py-1 bg-slate-800 text-primary-300 text-xs font-mono rounded border border-slate-700">UX Design</span>
+                        </div>
+                        <a href="https://cypher.inc/App" target="_blank" class="inline-flex items-center gap-2 text-sm text-primary-400 hover:text-primary-300">
+                            View Project <i data-lucide="external-link" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                    <div class="relative rounded-xl overflow-hidden border border-slate-700 shadow-2xl bg-slate-800 aspect-video">
+                        <!-- Comparison Visual -->
+                        <div class="absolute inset-0 flex items-center justify-center bg-slate-800">
+                             <img src="https://placehold.co/800x450/1e293b/475569?text=Before(Manual)+vs+After(GPT)" alt="Process Comparison" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 3: Education Method -->
+                <div class="group grid md:grid-cols-2 gap-8 items-center">
+                    <div class="order-2 md:order-1 relative rounded-xl overflow-hidden border border-slate-700 shadow-2xl bg-slate-800 aspect-video">
+                         <!-- Infographic Visual -->
+                         <div class="absolute inset-0 flex items-center justify-center bg-slate-800">
+                             <div class="text-center p-8 w-full h-full flex flex-col items-center justify-center bg-gradient-to-tr from-slate-900 to-slate-800">
+                                 <div class="text-6xl font-bold text-accent-green mb-2">+30</div>
+                                 <div class="text-xl text-slate-300 mb-6">Deviation Score</div>
+                                 <!-- Fake Line Chart -->
+                                 <svg viewBox="0 0 100 40" class="w-3/4 stroke-primary-500 fill-none stroke-2">
+                                     <polyline points="0,35 20,32 40,25 60,20 80,10 100,5" />
+                                     <circle cx="0" cy="35" r="2" class="fill-primary-500" />
+                                     <circle cx="20" cy="32" r="2" class="fill-primary-500" />
+                                     <circle cx="40" cy="25" r="2" class="fill-primary-500" />
+                                     <circle cx="60" cy="20" r="2" class="fill-primary-500" />
+                                     <circle cx="80" cy="10" r="2" class="fill-primary-500" />
+                                     <circle cx="100" cy="5" r="2" class="fill-accent-green stroke-white stroke-1" />
+                                 </svg>
+                             </div>
+                        </div>
+                    </div>
+                    <div class="order-1 md:order-2 space-y-6">
+                        <div class="flex items-center gap-4">
+                            <span class="text-accent-green font-mono text-sm">Educational Logic</span>
+                            <span class="h-px flex-1 bg-slate-700"></span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-100 group-hover:text-primary-400 transition-colors">
+                            定性評価の構造化による<br>偏差値30UPメソッド
+                        </h3>
+                        <p class="text-slate-400 leading-relaxed text-sm">
+                            「1:自力正解 〜 5:捨て問」の5段階指標を導入し、生徒の理解度をデータ化。復習の優先度をアルゴリズム的に決定することで、短期間での劇的な成果を実現しました。
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="px-2 py-1 bg-slate-800 text-primary-300 text-xs font-mono rounded border border-slate-700">Optimization</span>
+                            <span class="px-2 py-1 bg-slate-800 text-primary-300 text-xs font-mono rounded border border-slate-700">Data Driven</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Future / Vision Section -->
+    <section id="future" class="py-32 bg-black relative flex items-center justify-center overflow-hidden">
+        <!-- Canvas for Neural Network Animation -->
+        <canvas id="neural-canvas"></canvas>
+        
+        <div class="relative z-10 max-w-4xl mx-auto px-6 text-center space-y-12">
+            <h2 class="font-serif text-3xl md:text-5xl font-bold text-white leading-tight">
+                「探す」という行為から、<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-white">人々を解放する。</span>
+            </h2>
+            <div class="w-16 h-1 bg-primary-600 mx-auto"></div>
+            <p class="font-serif text-slate-400 text-lg leading-loose max-w-2xl mx-auto">
+                技術と現場の橋渡し役として。<br>
+                文脈を考慮したSNSテキストの感情分析（BERT）など、<br>
+                曖昧な言葉を価値ある情報へ変換するシステムを構築し、<br>
+                創造や自己実現に集中できる社会インフラを実装します。
+            </p>
+        </div>
+    </section>
+
+    <!-- 6. Contact -->
+    <footer id="contact" class="py-20 bg-slate-950 border-t border-slate-900">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-2xl font-bold text-white mb-2">Get in Touch</h2>
+            <p class="text-slate-500 mb-10 text-sm">まずはコードをご覧ください。</p>
+            
+            <a href="https://github.com/tomoya72457" target="_blank" class="inline-block group">
+                <div class="w-20 h-20 bg-slate-800 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-white group-hover:scale-110 transition-all duration-300 border border-slate-700 group-hover:border-white shadow-lg">
+                    <i data-lucide="github" class="w-10 h-10 text-white group-hover:text-black transition-colors"></i>
+                </div>
+                <span class="font-mono text-slate-400 group-hover:text-white transition-colors">github.com/tomoya72457</span>
+            </a>
+
+            <div class="mt-20 pt-8 border-t border-slate-900 text-xs text-slate-600 font-mono flex justify-between">
+                <span>© 2026 Tomoya Ide</span>
+                <span>Last Updated: 2026.02.08</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // --- Neural Network Animation (Future Section) ---
+        const canvas = document.getElementById('neural-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let particles = [];
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight; // Full height of section roughly
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.size = Math.random() * 2 + 1;
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(59, 130, 246, 0.5)'; // Primary Blue
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            for (let i = 0; i < 60; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animateNeural() {
+            ctx.clearRect(0, 0, width, height);
+            
+            // Draw Connections
+            for (let i = 0; i < particles.length; i++) {
+                let p1 = particles[i];
+                p1.update();
+                p1.draw();
+                
+                for (let j = i + 1; j < particles.length; j++) {
+                    let p2 = particles[j];
+                    let distance = Math.hypot(p1.x - p2.x, p1.y - p2.y);
+                    if (distance < 150) {
+                        ctx.strokeStyle = `rgba(59, 130, 246, ${0.2 * (1 - distance / 150)})`;
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(p1.x, p1.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animateNeural);
+        }
+
+        initParticles();
+        animateNeural();
+
+        // --- Navbar Scroll Effect ---
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-lg');
+                nav.classList.replace('border-white/5', 'border-slate-800');
+            } else {
+                nav.classList.remove('shadow-lg');
+                nav.classList.replace('border-slate-800', 'border-white/5');
+            }
+        });
+    </script>
+</body>
+</html>

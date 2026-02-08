@@ -1,78 +1,54 @@
-Tomoya Ide | Portfolio Site
+# 井手智也 | Portfolio - Tech & Logic
 
-中央大学理工学部ビジネスデータサイエンス学科 自然言語処理研究室 所属
+データサイエンス × Web開発 × 生成AI活用のポートフォリオサイト
 
-「データと論理で、不確実な世界に足場を築く」
+## 技術スタック
 
-自然言語処理（NLP）とWeb技術を軸に、課題の本質的な整理から実装、評価までを一貫して行うことに関心があります。
+- **Next.js 16** (App Router)
+- **React 19**
+- **TypeScript**
+- **Tailwind CSS v4**
+- **Lucide React** (アイコン)
 
-🚀 Overview
+## 開発
 
-このリポジトリは、自身のスキル、研究内容、およびこれまでのインターンシップやプロジェクトの成果をまとめたポートフォリオサイトのソースコードです。
-就職活動および自己紹介のために作成しました。
+```bash
+# 依存関係のインストール
+npm install
 
-Tech Stack
+# 開発サーバーの起動
+npm run dev
 
-Frontend: HTML5
+# ビルド
+npm run build
 
-Styling: Tailwind CSS (CDN)
+# 本番サーバーの起動
+npm start
+```
 
-Icons: Lucide Icons
+## プロジェクト構造
 
-Deployment: GitHub Pages
+```
+app/
+├── components/
+│   ├── shared/          # 共通コンポーネント (Header, Footer)
+│   ├── home/            # Heroセクション
+│   ├── about/           # Aboutセクション
+│   ├── skills/          # Skillsセクション
+│   ├── works/           # Worksセクション
+│   └── future/          # Future/Visionセクション
+├── globals.css          # グローバルスタイル
+├── layout.tsx           # ルートレイアウト
+└── page.tsx             # トップページ
+```
 
-Features:
+## デザインコンセプト
 
-完全レスポンシブ対応（Mobile / Desktop）
+- **ダークテーマ**: プロフェッショナルで洗練された印象
+- **グラスモーフィズム**: 半透明のガラス効果で奥行きを表現
+- **アニメーション**: フローティング、パルス、ニューラルネットワーク風の動き
+- **グラデーション**: プライマリカラー(Blue)とアクセントカラー(Green/Amber)の調和
 
-ダークモード搭載（OS設定自動検知 + 手動切り替え）
-
-シングルファイル構成による軽量設計
-
-📌 Key Highlights
-
-Research (NLP):
-
-学部4年次より自然言語処理研究室に配属予定。
-
-RAG（検索拡張生成）やアスペクトベース感情分析などの技術に関心を持ち、実装経験があります。
-
-Data Driven Education:
-
-個別指導塾にて、勘や経験則に頼らない「データに基づく学習支援」を実践。
-
-独自メソッドにより担当生徒の偏差値を10ヶ月で30向上させるなどの実績があります。
-
-Practical Experience:
-
-株式会社プロパゲート（Webエンジニアリング）
-
-株式会社グラフ（データサイエンス教材開発）
-
-🛠 Featured Work
-
-ポートフォリオ内で紹介している主な成果物です。
-
-| Project | Category | Description |
-|Args|---|---|
-| Science Agora 2025 | Event | JST主催イベントでのセッション企画・運営・ファシリテーション |
-| RAG Tutorial | Content | 初学者向けRAG実装ガイド（Google Colab） |
-| Cypher Profile | Web App | スキル・経歴可視化アプリケーション |
-
-💻 Usage
-
-このリポジトリをクローンし、ブラウザで index.html を開くことで動作確認が可能です。
-
-git clone [https://github.com/your-username/your-repo-name.git](https://github.com/your-username/your-repo-name.git)
-cd your-repo-name
-# index.html をブラウザで開く
-
-
-📂 Directory Structure
-
-.
-├── index.html    # メインページ（HTML + Tailwind + JS）
-└── README.md     # プロジェクト説明（本ファイル）
-
+## ライセンス
 
 © 2026 Tomoya Ide

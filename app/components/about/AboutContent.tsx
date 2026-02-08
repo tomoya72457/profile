@@ -1,4 +1,3 @@
-import { Cloud, Filter, ArrowRight, Cpu } from "lucide-react";
 import Image from "next/image";
 
 export default function AboutContent() {
@@ -37,68 +36,98 @@ export default function AboutContent() {
             </div>
           </div>
 
-          {/* Process Diagram */}
+          {/* Timeline */}
           <div className="md:col-span-8 space-y-12">
             <div className="glass-panel rounded-xl p-8 relative overflow-hidden">
-              <div className="absolute top-0 right-0 p-4 opacity-10">
-                <Cpu className="w-24 h-24" />
-              </div>
-              <h3 className="text-xl font-bold mb-8 text-center md:text-left">
-                Thinking Process
-              </h3>
+              <h3 className="text-xl font-bold mb-8">学歴・経歴</h3>
 
-              {/* Diagram */}
-              <div className="flex flex-col md:flex-row items-center justify-between gap-4 md:gap-8 relative z-10">
-                {/* Input */}
-                <div className="text-center w-full">
-                  <div className="h-24 w-24 mx-auto bg-slate-800 rounded-full border border-slate-600 flex items-center justify-center mb-4 relative">
-                    {/* Chaotic Dots */}
-                    <div className="absolute w-2 h-2 bg-slate-400 rounded-full top-6 left-6"></div>
-                    <div className="absolute w-2 h-2 bg-slate-500 rounded-full bottom-8 right-6"></div>
-                    <div className="absolute w-1.5 h-1.5 bg-slate-300 rounded-full top-8 right-8"></div>
-                    <Cloud className="w-8 h-8 text-slate-400" />
+              {/* Timeline */}
+              <div className="relative space-y-6">
+                {/* Vertical Line */}
+                <div className="absolute left-[4.5rem] top-2 bottom-2 w-0.5 bg-slate-700"></div>
+
+                {/* Timeline Items */}
+                <div className="relative flex gap-6">
+                  <div className="w-20 flex-shrink-0 text-right">
+                    <div className="text-sm font-mono text-primary-400">2023.03</div>
                   </div>
-                  <h4 className="font-bold text-slate-200">Input</h4>
-                  <p className="text-xs text-slate-500 mt-1">
-                    定性データ・曖昧な理解度
-                  </p>
-                </div>
-
-                {/* Arrow */}
-                <div className="hidden md:block">
-                  <ArrowRight className="w-6 h-6 text-slate-600" />
-                </div>
-
-                {/* Process */}
-                <div className="text-center w-full">
-                  <div className="h-24 w-24 mx-auto bg-slate-800 rounded-full border border-primary-500/50 flex items-center justify-center mb-4 shadow-[0_0_15px_rgba(59,130,246,0.3)]">
-                    <Filter className="w-8 h-8 text-primary-400" />
+                  <div className="relative flex-1 pb-6">
+                    <div className="text-slate-200 font-medium">山手学院高等学校　卒業</div>
                   </div>
-                  <h4 className="font-bold text-primary-400">Process</h4>
-                  <p className="text-xs text-slate-500 mt-1">
-                    数値化・BERT分析・構造化
-                  </p>
                 </div>
 
-                {/* Arrow */}
-                <div className="hidden md:block">
-                  <ArrowRight className="w-6 h-6 text-slate-600" />
-                </div>
-
-                {/* Output */}
-                <div className="text-center w-full">
-                  <div className="h-24 w-24 mx-auto bg-slate-800 rounded-full border border-accent-green/50 flex items-center justify-center mb-4 shadow-[0_0_15px_rgba(16,185,129,0.3)]">
-                    <div className="grid grid-cols-2 gap-1">
-                      <div className="w-3 h-3 bg-accent-green rounded-sm"></div>
-                      <div className="w-3 h-3 bg-accent-green rounded-sm"></div>
-                      <div className="w-3 h-3 bg-accent-green rounded-sm"></div>
-                      <div className="w-3 h-3 bg-accent-green rounded-sm"></div>
-                    </div>
+                <div className="relative flex gap-6">
+                  <div className="w-20 flex-shrink-0 text-right">
+                    <div className="text-sm font-mono text-primary-400">2023.04</div>
                   </div>
-                  <h4 className="font-bold text-accent-green">Output</h4>
-                  <p className="text-xs text-slate-500 mt-1">
-                    偏差値UP・再現性ある解決
-                  </p>
+                  <div className="relative flex-1 pb-6">
+                    <div className="text-slate-200 font-medium">中央大学理工学部ビジネスデータサイエンス学科　入学</div>
+                  </div>
+                </div>
+
+                <div className="relative flex gap-6">
+                  <div className="w-20 flex-shrink-0 text-right">
+                    <div className="text-sm font-mono text-primary-400">2024.12</div>
+                  </div>
+                  <div className="relative flex-1 pb-6">
+                    <div className="text-slate-200 font-medium">特定非営利活動法人 STEM Leaders　所属</div>
+                  </div>
+                </div>
+
+                <div className="relative flex gap-6">
+                  <div className="w-20 flex-shrink-0 text-right">
+                    <div className="text-sm font-mono text-primary-400">2025.07</div>
+                  </div>
+                  <div className="relative flex-1 pb-6">
+                    <div className="text-slate-200 font-medium">株式会社グラフ　インターン入社</div>
+                    <div className="text-slate-400 text-sm mt-1">ビジネスデータサイエンティスト</div>
+                  </div>
+                </div>
+
+                <div className="relative flex gap-6">
+                  <div className="w-20 flex-shrink-0 text-right">
+                    <div className="text-sm font-mono text-primary-400">2025.12</div>
+                  </div>
+                  <div className="relative flex-1 pb-6">
+                    <div className="text-slate-200 font-medium">株式会社グラフ　退社</div>
+                  </div>
+                </div>
+
+                <div className="relative flex gap-6">
+                  <div className="w-20 flex-shrink-0 text-right">
+                    <div className="text-sm font-mono text-primary-400">2025.12</div>
+                  </div>
+                  <div className="relative flex-1 pb-6">
+                    <div className="text-slate-200 font-medium">株式会社プロパゲート　入社</div>
+                    <div className="text-slate-400 text-sm mt-1">AIエンジニア ・ データサイエンティスト</div>
+                  </div>
+                </div>
+
+                <div className="relative flex gap-6">
+                  <div className="w-20 flex-shrink-0 text-right">
+                    <div className="text-sm font-mono text-primary-400">2025.12</div>
+                  </div>
+                  <div className="relative flex-1 pb-6">
+                    <div className="text-slate-200 font-medium">中央大学 自然言語処理研究室　配属</div>
+                  </div>
+                </div>
+
+                <div className="relative flex gap-6">
+                  <div className="w-20 flex-shrink-0 text-right">
+                    <div className="text-sm font-mono text-primary-400">2027.03</div>
+                  </div>
+                  <div className="relative flex-1 pb-6">
+                    <div className="text-slate-200 font-medium">中央大学理工学部ビジネスデータサイエンス学科　卒業見込み</div>
+                  </div>
+                </div>
+
+                <div className="relative flex gap-6">
+                  <div className="w-20 flex-shrink-0 text-right">
+                    <div className="text-sm font-mono text-primary-400">2027.04</div>
+                  </div>
+                  <div className="relative flex-1">
+                    <div className="text-slate-200 font-medium">中央大学理工学研究科ビジネスデータサイエンス専攻　入学予定</div>
+                  </div>
                 </div>
               </div>
             </div>

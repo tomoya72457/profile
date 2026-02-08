@@ -29,7 +29,7 @@ export default function WorksShowcase() {
                 {/* Overlay Mobile Mockup */}
                 <div className="absolute bottom-4 right-4 w-24 h-48 bg-black rounded border-2 border-slate-600 shadow-xl overflow-hidden">
                   <Image
-                    src="/images/quiz_app_ui_mockup.png"
+                    src="/images/phone.PNG"
                     alt="Quiz UI"
                     width={150}
                     height={300}
